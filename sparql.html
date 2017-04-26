@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lodex</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel='stylesheet' href='http://cdn.jsdelivr.net/yasgui/2.5.3/yasgui.min.css' type='text/css'/>
+        <script src='http://cdn.jsdelivr.net/yasgui/2.5.3/yasgui.min.js'></script>
+
+        <style>
+            body { padding-top: 70px; }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Lodex</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a class="btn-admin" href="/admin">Administration</a></li>
+                    <li><a class="btn-sign-in" href="/login">Connection</a></li>
+                    <li><a href="/sparql.html" class="btn">SPARQL</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div id="root"></div>
+        <script>
+          YASGUI.YASQE.defaults.sparql.endpoint = 'https://lod.abes.fr/sparql';
+          YASGUI.YASQE.defaults.value = 'Testons un peu';
+          var options = {
+            catalogueEndpoints: [
+              { endpoint: 'http://192.168.31.146:49219/sparql', title: 'ISTEX local' },
+              { endpoint: 'http://data.persee.fr/sparql/', title: 'Persée' },
+              { endpoint: 'https://lod.abes.fr/sparql',    title: 'ABES' },
+              { endpoint: 'http://www.rechercheisidore.fr/sparql', title: 'ISIDORE'},
+              { endpoint: 'http://lod.springer.com/sparql', title: 'Springer' },
+              { endpoint: 'https://www.europeandataportal.eu/sparql', title: 'Portail européen de données' }
+            ]
+          };
+          YASGUI.defaults.catalogueEndpoints = options.catalogueEndpoints;
+          var yasgui = YASGUI(document.getElementById("root"), options);
+        </script>
+    </body>
+</html>
